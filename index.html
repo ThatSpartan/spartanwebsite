@@ -1,11 +1,177 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset=utf-8 />
-	<title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript">
+// home
+        $(window).on('scroll', function() {
+        scrollPosition = $(this).scrollTop();
+        if (scrollPosition < $("header").outerHeight( true ) - 10 - 68 ) {
+          // do stuff
+          $(".navHome").addClass("current");
+        }
+        else {
+          $(".navHome").removeClass("current");
+        }
+    });
+// painting
+    $(window).on('scroll', function() {
+    scrollPosition = $(this).scrollTop();
+    if (scrollPosition >= $("header").outerHeight( true ) - 10 - 68 && scrollPosition <= $("header").outerHeight( true ) + $(".main").outerHeight( true ) - 68 ) {
+      // do stuff
+      $(".navPaint").addClass("current");
+    }
+    else {
+      $(".navPaint").removeClass("current");
+    }
+    });
+// about
+    $(window).on('scroll', function() {
+    scrollPosition = $(this).scrollTop();
+    if (scrollPosition >= $("header").outerHeight( true ) + $(".main").outerHeight( true ) - 68 ) {
+      // do stuff
+      $(".navAbout").addClass("current");
+    }
+    else {
+      $(".navAbout").removeClass("current");
+    }
+});
+// toggle border
+function toggleBorder() {
+  var x = document.getElementById("myGrid");
+  if (x.className === "row") {
+      x.className = "row-padding";
+  } else {
+      x.className = x.className.replace("row-padding", "row");
+  }
+};
+// navbar
+$(window).on('scroll', function() {
+  scrollPosition = $(this).scrollTop();
+  if (scrollPosition >= 20) {
+    $(".inner-header").addClass("navbar-top");
+  } else {
+    $(".inner-header").removeClass("navbar-top");
+  };
+});
+function funcNavbar() {
+  $(".inner-header").addClass("navbar-hide");
+};
+// var menus = document.getElementsByClassName('open-icon')
+// [].foreach.call(menus, function (m) {
+//   e.addlistener('click', function () {
+//     e.classlist.toggle('open-x', addorremove);
+//   });
+// });
+
+$(document).ready(function() {
+  $( "#click-x" ).click(function() {
+    $( this ).toggleClass( "open-x" );
+  });
+});
+
+  </script>
 </head>
-<body>
-    <h1>Hello, this is the website!</h1>
-	<p>That's just the start!</p>
+
+<body id="top">
+  <header>
+    <section class="inner-header">
+      <div class="nav-container">
+      <a href="#" class="logo" onclick="toggleBorder()"></a>
+      <nav>
+        <ul>
+          <li><a href="#top" class="navHome">Home</a></li>
+          <li><a href="#paint" class="navPaint">Paintings</a></li>
+          <li><a href="#about" class="navAbout">About</a></li>
+          <!-- <li><a onclick="funcNavbar()"><i class="fa fa-bars"></i></a></li> -->
+                <li>
+                    <div class="open-icon" id="click-x">
+                        <div class="one"></div>
+                        <div class="two"></div>
+                        <div class="three"></div>
+                    </div>
+                </li>
+        </ul>
+      </nav>
+      <div class="warpper"></div>
+    </div>
+    </section>
+  </header>
+
+  <section class="main">
+    <div class="row row-padding" id="myGridd">
+      <div class="col" id="paint">
+        <img src="painting_1.png" alt="">
+        <img src="painting_2.png" alt="">
+        <img src="painting_3.jpg" alt="">
+        <img src="painting5.jpg" alt="">
+        <img src="painting6.jpg" alt="">
+        <img src="painting7.jpg" alt="">
+        <img src="painting8.jpg" alt="">
+        <img src="painting9.jpg" alt="">
+        <img src="painting10.jpg" alt="">
+        <img src="painting11.jpg" alt="">
+        <img src="painting12.jpg" alt="">
+        <img src="painting13.jpg" alt="">
+        <img src="painting25.jpg" alt="">
+      </div>
+      <div class="col">
+      <img src="painting14.jpg" alt="">
+      <img src="painting15.jpg" alt="">
+      <img src="painting16.jpg" alt="">
+      <img src="painting17.jpg" alt="">
+      <img src="painting18.jpg" alt="">
+      <img src="painting19.jpg" alt="">
+      <img src="painting20.jpg" alt="">
+      <img src="painting21.jpg" alt="">
+      <img src="painting22.jpg" alt="">
+      <img src="painting23.jpg" alt="">
+      <img src="painting24.jpg" alt="">
+      </div>
+      <div class="fix"></div>
+    </div>
+  </section>
+
+  <section class="info" id="about">
+<div>
+  <h3>
+    <span>About</span>
+  </h3>
+  <hr>
+  <p>
+Blablabla sldjflkdshfls lsdf las lsdjfldsa flksdjf ldskjaf ld flsd fdsl jfldsfj dlskfjdsl fjld fkldsjf dlskf kdlsf dlskfjdsl flds fjldskf jdslf dsljkf dlkf dslkjfldksf dslkfjdslkjf ldsfj dslkf dlkfj sd.
+<br>
+Blablabla sldjflkdshfls lsdf las lsdjfldsa flksdjf ldskjaf ld flsd fdsl jfldsfj dlskfjdsl fjld fkldsjf dlskf kdlsf dlskfjdsl flds fjldskf jdslf dsljkf dlkf dslkjfldksf dslkfjdslkjf ldsfj dslkf dlkfj sd.
+  </p>
+
+</div>
+  </section>
+
+<footer>
+  <div class="foot">
+    <div class="icon">
+      <i class="fa fa-facebook-official indigo"></i>
+      <i class="fa fa-instagram purple"></i>
+      <i class="fa fa-snapchat yellow"></i>
+      <i class="fa fa-pinterest-p red"></i>
+      <i class="fa fa-twitter blue"></i>
+      <i class="fa fa-linkedin indigo"></i>
+      <i class="fa fa-envelope-o red"></i>
+    </div>
+    <div>
+      <p>Made for ©Jennifer</p>
+      <p>Built & designed by ©Dominik</p>
+    </div>
+  </div>
+</footer>
+
 </body>
+
 </html>

@@ -8,6 +8,41 @@
   clear: both;
 }
 
+/* loading screen */
+
+.loading-screen {
+  display: block;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: black;
+  z-index: 100;
+}
+.loading {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 15px solid rgba(201, 201, 201, 0.31);
+  border-top: 15px solid rgb(56, 118, 238);
+  animation: spin 1.5s linear infinite;
+  margin: 100px auto;
+}
+/*.loading2 {
+  width: 22%;
+  height: 22%;
+  border-radius: 50%;
+  border: 15px solid rgb(60, 238, 56);
+  animation: spin 2s linear infinite;
+  margin: auto;
+}*/
+@keyframes spin {
+  from{ transform: rotate(0deg); }
+  to{ transform: rotate(360deg); }
+}
+/* end of loading screen */
+
 /*#9c27b0
 #673ab7*/
 .purple:hover {color: #9c27b0;}
@@ -34,7 +69,7 @@ header {
 .inner-header {
   background-color: rgba(0, 0, 0, 0.68);
   width: 100%;
-
+  transition: all .15s easy-out;
   /* animation */
 
 }
@@ -51,14 +86,19 @@ header {
 
 .logo {
   float: left;
-  margin: 10px;
-  margin-top: 15px;
-  width: 75px;
-  height: 35px;
+  /*margin: 10px;*/
+  margin-top: -10px;
+  margin-left: 20px;
+  width: 100px;
+  height: 100px;
 }
 
 a.logo {
-  background: url(slice1.png) no-repeat center;
+  background-image: url(logo_image.png);
+  /*background: url(logo_image.png) no-repeat center;*/
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 nav {
@@ -83,6 +123,9 @@ nav ul li a {
   font-weight: 800;
   transition: color .15s ease-in-out;
 }
+.nav-color {
+  color: #131313;
+}
 
 nav ul li a:hover {
   color: rgb(103, 218, 62);
@@ -96,8 +139,12 @@ nav ul li a:hover {
 }
 
 .navbar-hide {
-  animation:animateslide 0.4s;
+  animation: animateslide 0.4s;
   overflow: hidden;
+}
+.nav-show {
+  animation: animateslideback 0.4s;
+  overflow: default;
 }
 /*.navbar-show {
   right: 0;
@@ -105,6 +152,7 @@ nav ul li a:hover {
 
 /* animation */
 @keyframes animateslide{from{width:100%;opacity:1} to{width:0;opacity:0}}
+@keyframes animateslideback{from{width:0;opacity:0} to{width:100%;opacity:1}}
 
 nav ul li i {
   position: fixed;
@@ -130,7 +178,7 @@ img:hover + p {
 img {
   width: 100%;
   margin-bottom: -4px;
-  padding: 0 8px;
+  /*padding: 0 8px;*/
 }
 
 .main {
@@ -172,6 +220,9 @@ img {
 @media only screen and (max-width: 599px) {
   .col {
     width: 100%;
+  }
+  header {
+    display: none;
   }
 }
 
@@ -241,6 +292,9 @@ hr {
     border-radius: 0;
     max-width: none;
   }
+  .nav2 {
+    width: 0;
+  }
 }
 /* footer content */
 
@@ -295,10 +349,101 @@ footer {
 }
 .open-x .one {
   transform: translateY(8px) rotate(45deg);
+  /*background-color: rgb(43, 43, 43);*/
 }
 .open-x .two {
   opacity: 0;
+  /*background-color: rgb(43, 43, 43);*/
 }
 .open-x .three {
   transform: translateY(-8px) rotate(-45deg);
+  /*background-color: rgb(43, 43, 43);*/
 }
+@media only screen and (max-width: 599px) {
+  .open-x .one {
+    background-color: rgb(43, 43, 43);
+  }
+  .open-x .two {
+    background-color: rgb(43, 43, 43);
+  }
+  .open-x .three {
+    background-color: rgb(43, 43, 43);
+  }
+
+}
+
+
+
+
+/* new navbar */
+
+.nav2 ul li {
+  display: block;
+  float: none;
+}
+.nav2 ul li a:hover {
+  color: rgb(103, 218, 62);
+  background-color: rgb(236, 236, 236)
+}
+.nav2 {
+  background-color: rgb(223, 222, 222);
+  height: 100%;
+  width: 0;
+  top: 0;
+  right: 0;
+  position: absolute;
+  transition: width .2s ease-out;
+}
+.nav2 ul {
+  list-style-type: none;
+  margin-top: 60px;
+  display: block;
+  width: 100%;
+  /*background-color: rgb(0, 181, 255);*/
+}
+.nav2 ul li {
+  display: block;
+  margin-bottom: 10px;
+  width: auto;
+  height: auto;
+}
+.nav2 ul li a {
+    display: block;
+    /*background-color: rgb(149, 4, 242);*/
+    padding: 25px 10px;
+    text-align: center;
+  text-decoration: none;
+  font-size: 150%;
+  color: #131313;
+  font-weight: 800;
+  transition: all .15s ease-in-out;
+}
+@media only screen and (max-width: 599px) {
+  .nav2 {
+    width: 250px;
+  }
+}
+.small-hide {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.small-hide-tab {
+  width: 0;
+}
+
+.full-window {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: .4;
+  display: none;
+  transition-duration: 2s;
+}
+.full-window-show {
+  display: block;
+}
+/* end of new navbar */

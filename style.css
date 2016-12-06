@@ -393,6 +393,7 @@ footer {
   right: 0;
   position: absolute;
   transition: width .2s ease-out;
+  overflow: hidden;
 }
 .nav2 ul {
   list-style-type: none;

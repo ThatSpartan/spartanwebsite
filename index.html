@@ -7,6 +7,7 @@
   <title>Home</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans+Condensed:300|Lato:300,700" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type="text/javascript">
@@ -19,60 +20,90 @@ $(document).ready( function() {
 });
 
 // home
-        $(window).on('scroll', function() {
-        scrollPosition = $(this).scrollTop();
-        if (scrollPosition < $("header").outerHeight( true ) - 10 - 68 ) {
-          // do stuff
-          $(".navHome").addClass("current");
-        }
-        else {
-          $(".navHome").removeClass("current");
-        }
-    });
+    //     $(window).on('scroll', function() {
+    //     scrollPosition = $(this).scrollTop();
+    //     if (scrollPosition < $("header").outerHeight( true ) - 10 - 68 ) {
+    //       // do stuff
+    //       $(".navHome").addClass("current");
+    //     }
+    //     else {
+    //       $(".navHome").removeClass("current");
+    //     }
+    // });
 // painting
-    $(window).on('scroll', function() {
-    scrollPosition = $(this).scrollTop();
-    if (scrollPosition >= $("header").outerHeight( true ) - 10 - 68 && scrollPosition <= $("header").outerHeight( true ) + $(".main").outerHeight( true ) - 68 ) {
-      // do stuff
-      $(".navPaint").addClass("current");
-    }
-    else {
-      $(".navPaint").removeClass("current");
-    }
-    });
+    // $(window).on('scroll', function() {
+    // scrollPosition = $(this).scrollTop();
+    // if (scrollPosition >= $("header").outerHeight( true ) - 10 - 68 && scrollPosition <= $("header").outerHeight( true ) + $(".main").outerHeight( true ) - 68 ) {
+    //   // do stuff
+    //   $(".navPaint").addClass("current");
+    // }
+    // else {
+    //   $(".navPaint").removeClass("current");
+    // }
+    // });
 // about
-    $(window).on('scroll', function() {
-    scrollPosition = $(this).scrollTop();
-    if (scrollPosition >= $("header").outerHeight( true ) + $(".main").outerHeight( true ) - 68 ) {
-      // do stuff
-      $(".navAbout").addClass("current");
-    }
-    else {
-      $(".navAbout").removeClass("current");
-    }
-});
-// toggle border
-function toggleBorder() {
-  var x = document.getElementById("myGrid");
-  if (x.className === "row") {
-      x.className = "row-padding";
-  } else {
-      x.className = x.className.replace("row-padding", "row");
-  }
-};
-// navbar
+//     $(window).on('scroll', function() {
+//     scrollPosition = $(this).scrollTop();
+//     if (scrollPosition >= $("header").outerHeight( true ) + $(".main").outerHeight( true ) - 68 ) {
+//       // do stuff
+//       $(".navAbout").addClass("current");
+//     }
+//     else {
+//       $(".navAbout").removeClass("current");
+//     }
+// });
+
+
+// START OF NEW ADAPTIVE NAVBAR SCROLLING CODE
+    // $(window).on('scroll', function() {
+  // )};
 $(window).on('scroll', function() {
   scrollPosition = $(this).scrollTop();
-  if (scrollPosition >= 40) {
-    $(".inner-header").addClass("navbar-top");
-    $( "nav>ul>li>a" ).css( 'color', '#fefefe' );
-    $( ".logo" ).css( 'background-image', 'url(logo_image_white.png)' );
-  } else {
-    $(".inner-header").removeClass("navbar-top");
-    $( "nav>ul>li>a" ).css( 'color', '#131313' );
-    $( ".logo" ).css( 'background-image', 'url(logo_image.png)' );
-  };
+  // HOME
+  if ( scrollPosition < (417 - 77) )
+    $( ".navHome").addClass( "current" );
+  else {
+    $( ".navHome").removeClass( "current" );
+  }
+  // PAINTINGS
+  // ABOUT
 });
+
+
+
+// END OF THAT NEW ADAPTIVE NAVBAR
+
+
+// toggle border
+// function toggleBorder() {
+//   var x = document.getElementById("myGrid");
+//   if (x.className === "row") {
+//       x.className = "row-padding";
+//   } else {
+//       x.className = x.className.replace("row-padding", "row");
+//   }
+// };
+// navbar
+// $(window).on('scroll', function() {
+//   scrollPosition = $(this).scrollTop();
+//   if (scrollPosition >= 40) {
+    // $(".inner-header1").addClass("scroll-navbar-hide");
+    // $(".inner-header2").removeClass("scroll-navbar-hide");
+    // $(".inner-header").addClass("navbar-top");
+    // $( "nav>ul>li>a" ).css( 'color', '#fefefe' );
+    // $( ".logo" ).css( 'background-image', 'url(logo_image_white.png)' );
+    // add new color for nav
+    // $( "nav-color" ).addClass( ".new-color" );
+  // } else {
+    // $(".inner-header2").addClass("scroll-navbar-hide");
+    // $(".inner-header1").removeClass("scroll-navbar-hide");
+    // $(".inner-header").removeClass("navbar-top");
+    // $( "nav>ul>li>a" ).css( 'color', '#131313' );
+    // $( ".logo" ).css( 'background-image', 'url(logo_image.png)' );
+    // remove that new color
+    // $( "nav-color" ).removeClass( ".new-color" );
+  // };
+// });
 
 // function funcNavbar() {
 //   $(".inner-header").addClass("navbar-hide");
@@ -97,6 +128,17 @@ $(document).ready(function() {
   $( ".small-hide" ).click(function() {
     $( ".nav2" ).toggleClass( "small-hide-tab" );
     $( ".full-window" ).toggleClass( "full-window-show" );
+    $( ".mobile-nav-hide" ).css("display", "block");
+  });
+});
+// samething but for li elements
+$(document).ready(function() {
+  $( ".new-hide" ).click(function() {
+    $( ".nav2" ).toggleClass( "small-hide-tab" );
+    $( ".full-window" ).toggleClass( "full-window-show" );
+    $( ".mobile-nav-hide" ).css("display", "block");
+// also toggle x button
+    $( ".click-x" ).toggleClass( "open-x" );
   });
 });
   </script>
@@ -104,10 +146,10 @@ $(document).ready(function() {
 
 <body id="top">
 
-<div class="loading-screen">
-  <div class="loading"></div>
+<!-- <div class="loading-screen"> -->
+  <!-- <div class="loading"></div> -->
   <!-- <div class="loading2"></div> -->
-</div>
+<!-- </div> -->
 
   <div class="full-window"></div>
   <div class="nav2 small-hide-tab">
@@ -121,9 +163,9 @@ $(document).ready(function() {
         </div>
       </li>
 
-      <li><a href="#top" class="navHome">Home</a></li>
-      <li><a href="#paint" class="navPaint">Paintings</a></li>
-      <li><a href="#about" class="navAbout">About</a></li>
+      <li class="mobile-nav-hide new-hide"><a href="#top" class="navHome2">Home</a></li>
+      <li class="mobile-nav-hide new-hide"><a href="#paint" class="navPaint2">Paintings</a></li>
+      <li class="mobile-nav-hide new-hide"><a href="#about" class="navAbout2">About</a></li>
     </ul>
 
   </div>
@@ -133,12 +175,12 @@ $(document).ready(function() {
 
 
   <header>
-    <section class="inner-header">
+    <section class="inner-header inner-header1 navbar-top">
       <div class="nav-container">
       <a href="#" class="logo" onclick="toggleBorder()"></a>
       <nav>
         <ul>
-          <li><a href="#top" class="navHome nav-color">Home</a></li>
+          <li><a href="#top" class="navHome nav-color current">Home</a></li>
           <li><a href="#paint" class="navPaint nav-color">Paintings</a></li>
           <li><a href="#about" class="navAbout nav-color">About</a></li>
           <!-- <li><a onclick="funcNavbar()"><i class="fa fa-bars"></i></a></li> -->
@@ -158,11 +200,36 @@ $(document).ready(function() {
     </section>
   </header>
 
+
+<!-- second header for the scrolling part -->
+  <!-- <header>
+    <section class="inner-header navbar-top inner-header2 scroll-navbar-hide">
+      <div class="nav-container">
+      <a href="#" class="logo2" onclick="toggleBorder()"></a>
+      <nav>
+        <ul>
+          <li><a href="#top" class="navHome nav-color new-color">Home</a></li>
+          <li><a href="#paint" class="navPaint nav-color new-color">Paintings</a></li>
+          <li><a href="#about" class="navAbout nav-color new-color">About</a></li>
+        </ul>
+      </nav>
+      <div class="warpper"></div>
+    </div>
+    </section>
+  </header> -->
+
+<section class="head-info">
+  <div class="head-container">
+    <h1><span style="font-family: Lato; font-weight: 300;">Art</span><span style="font-family: Lato; font-weight: 700;">4</span><span style="font-family: Lato; font-weight: 300;">u</span><span style="font-family: Lato; font-weight: 700;">2</span><span style="font-family: Lato; font-weight: 300;">c</span></h1>
+    <h3>Jennifer's Arts</h3>
+  </div>
+</section>
+
   <section class="main">
     <div class="row row-padding" id="myGridd">
       <div class="col" id="paint">
-        <img src="painting_1.png" alt="">
-        <img src="painting_2.png" alt="">
+        <img src="painting_1.jpg" alt="">
+        <img src="painting_2.jpg" alt="">
         <img src="painting_3.jpg" alt="">
         <img src="painting5.jpg" alt="">
         <img src="painting6.jpg" alt="">

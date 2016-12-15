@@ -19,6 +19,12 @@ $(document).ready( function() {
   }, 5000);
 });
 
+// default css adding classes
+$(document).ready( function() {
+  $('.new-main ul' ).addClass( 'gap' );
+  $('.new-main li' ).addClass( 'li-border' );
+});
+
 // home
     //     $(window).on('scroll', function() {
     //     scrollPosition = $(this).scrollTop();
@@ -60,13 +66,23 @@ $(document).ready( function() {
 $(window).on('scroll', function() {
   scrollPosition = $(this).scrollTop();
   // HOME
-  if ( scrollPosition < (417 - 77) )
+  if ( scrollPosition <= (417 - 77) ) {
     $( ".navHome").addClass( "current" );
-  else {
+  } else {
     $( ".navHome").removeClass( "current" );
-  }
+  };
   // PAINTINGS
+  if ( (scrollPosition > (417 - 77)) && (scrollPosition <= (417 - 77) + $( '.new-main' ).outerHeight( true ) ) ) {
+    $( '.navPaint' ).addClass( 'current' );
+  } else {
+    $( '.navPaint' ).removeClass( 'current' );
+  };
   // ABOUT
+  if ( scrollPosition > (417 - 77) + $( '.new-main' ).outerHeight( true ) ) {
+    $( '.navAbout' ).addClass( 'current' );
+  } else {
+    $( '.navAbout' ).removeClass( 'current' );
+  };
 });
 
 
@@ -141,6 +157,16 @@ $(document).ready(function() {
     $( ".click-x" ).toggleClass( "open-x" );
   });
 });
+
+// toggle images border start
+$(document).ready(function() {
+  $( '.logo' ).click(function() {
+    $( '.new-main li' ).toggleClass( 'li-border li-border-on' );
+    $( '.new-main ul' ).toggleClass( 'gap gap-on' );
+    $( '.new-main' ).toggleClass( 'main-padding main-padding-on' );
+  });
+});
+// image border end
   </script>
 </head>
 
@@ -177,7 +203,7 @@ $(document).ready(function() {
   <header>
     <section class="inner-header inner-header1 navbar-top">
       <div class="nav-container">
-      <a href="#" class="logo" onclick="toggleBorder()"></a>
+      <div class="logo"></div>
       <nav>
         <ul>
           <li><a href="#top" class="navHome nav-color current">Home</a></li>
@@ -225,9 +251,9 @@ $(document).ready(function() {
   </div>
 </section>
 
-  <section class="main">
+  <!-- <section class="main">
     <div class="row row-padding" id="myGridd">
-      <div class="col" id="paint">
+      <div class="col">
         <img src="painting_1.jpg" alt="">
         <img src="painting_2.jpg" alt="">
         <img src="painting_3.jpg" alt="">
@@ -257,6 +283,37 @@ $(document).ready(function() {
       </div>
       <div class="fix"></div>
     </div>
+  </section> -->
+
+  <section class="new-main" id="paint">
+    <ul>
+      <li><img src="painting_1.jpg" alt=""></li>
+      <li><img src="painting_2.jpg" alt=""></li>
+      <li><img src="painting_3.jpg" alt=""></li>
+      <li><img src="painting5.jpg" alt=""></li>
+      <li><img src="painting6.jpg" alt=""></li>
+      <li><img src="painting7.jpg" alt=""></li>
+      <li><img src="painting8.jpg" alt=""></li>
+      <li><img src="painting9.jpg" alt=""></li>
+      <li><img src="painting10.jpg" alt=""></li>
+      <li><img src="painting11.jpg" alt=""></li>
+      <li><img src="painting12.jpg" alt=""></li>
+      <li><img src="painting13.jpg" alt=""></li>
+      <li><img src="painting14.jpg" alt=""></li>
+      <li><img src="painting15.jpg" alt=""></li>
+      <li><img src="painting16.jpg" alt=""></li>
+      <li><img src="painting17.jpg" alt=""></li>
+      <li><img src="painting18.jpg" alt=""></li>
+      <li><img src="painting19.jpg" alt=""></li>
+      <li><img src="painting20.jpg" alt=""></li>
+      <li><img src="painting21.jpg" alt=""></li>
+      <li><img src="painting22.jpg" alt=""></li>
+      <li><img src="painting23.jpg" alt=""></li>
+      <li><img src="painting24.jpg" alt=""></li>
+      <li><img src="painting25.jpg" alt=""></li>
+
+      <div class="fix"></div>
+    </ul>
   </section>
 
   <section class="info" id="about">

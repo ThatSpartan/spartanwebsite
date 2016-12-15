@@ -165,6 +165,11 @@ $(document).ready(function() {
     $( '.new-main ul' ).toggleClass( 'gap gap-on' );
     $( '.new-main' ).toggleClass( 'main-padding main-padding-on' );
   });
+  $( '.logo-mobile' ).click(function() {
+    $( '.new-main li' ).toggleClass( 'li-border li-border-on' );
+    $( '.new-main ul' ).toggleClass( 'gap gap-on' );
+    $( '.new-main' ).toggleClass( 'main-padding main-padding-on' );
+  });
 });
 // image border end
   </script>
@@ -192,6 +197,7 @@ $(document).ready(function() {
       <li class="mobile-nav-hide new-hide"><a href="#top" class="navHome2">Home</a></li>
       <li class="mobile-nav-hide new-hide"><a href="#paint" class="navPaint2">Paintings</a></li>
       <li class="mobile-nav-hide new-hide"><a href="#about" class="navAbout2">About</a></li>
+      <li><div class="logo-mobile"></div></li>
     </ul>
 
   </div>

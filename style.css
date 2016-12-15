@@ -120,6 +120,21 @@ div.logo {
   background-position: center;
 
   cursor: pointer;
+
+  transition-duration: .3s;
+}
+.logo:hover {
+  background-image: url(logo_image_purple.png);
+}
+.logo-mobile {
+  background-image: url(logo_image.png);
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  margin: 0 auto;
 }
 /*a.logo2 {
   background-image: url(logo_image_white.png);

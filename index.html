@@ -13,10 +13,10 @@
   <script type="text/javascript">
 // loading screen
 $(document).ready( function() {
-  setTimeout(function(){
+  //setTimeout(function(){
     $( ".loading-screen" ).css( 'display', 'none' );
-    // alert("done loading");
-  }, 5000);
+    alert("done loading");
+  //}, 5000);
 });
 
 // default css adding classes
@@ -309,7 +309,7 @@ $(document).ready(function() {
 
 <body id="top">
 
-<div class="loading-screen">
+<div class="loading-screen" style="opacity: .5">
   <div class="loading"></div>
   <div class="loading2"></div>
 </div>

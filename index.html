@@ -68,20 +68,26 @@ $(window).on('scroll', function() {
   // HOME
   if ( scrollPosition <= (417 - 77) ) {
     $( ".navHome").addClass( "current" );
+    $( '.navHome2' ).addClass( 'new-current' );
   } else {
     $( ".navHome").removeClass( "current" );
+    $( '.navHome2' ).removeClass( 'new-current' );
   };
   // PAINTINGS
   if ( (scrollPosition > (417 - 77)) && (scrollPosition <= (417 - 77) + $( '.new-main' ).outerHeight( true ) ) ) {
     $( '.navPaint' ).addClass( 'current' );
+    $( '.navPaint2' ).addClass( 'new-current' );
   } else {
     $( '.navPaint' ).removeClass( 'current' );
+    $( '.navPaint2' ).removeClass( 'new-current' );
   };
   // ABOUT
   if ( scrollPosition > (417 - 77) + $( '.new-main' ).outerHeight( true ) ) {
     $( '.navAbout' ).addClass( 'current' );
+    $( '.navAbout2' ).addClass( 'new-current' );
   } else {
     $( '.navAbout' ).removeClass( 'current' );
+    $( '.navAbout2' ).removeClass( 'new-current' );
   };
 });
 
@@ -172,6 +178,132 @@ $(document).ready(function() {
   });
 });
 // image border end
+
+
+// main-style scripts
+    // screen size
+    $(document).ready(function() {
+
+      if ($(window).width() < 599) {
+        $('.main-style').hide();
+      } else {
+        $('.main-style').show();
+      };
+
+      $(window).resize(function() {
+
+        if ($(window).width() < 599) {
+          $('.main-style').hide();
+        } else {
+          $('.main-style').show();
+        };
+
+      });
+    });
+    // hover
+    $(document).ready(function() {
+
+      $('.main-style img').hover(function() {
+
+        switch ($(this).attr('src')) {
+          case '1-column.jpg':
+            $(this).attr('src', '1-column-hover.jpg');
+            break;
+          case '2-column.jpg':
+          $(this).attr('src', '2-column-hover.jpg');
+            break;
+          case '3-column.jpg':
+          $(this).attr('src', '3-column-hover.jpg');
+            break;
+          default:
+          $(this).css('background-color', 'green');
+        };
+
+      }, function() {
+
+        switch ($(this).attr('src')) {
+          case '1-column-hover.jpg':
+            $(this).attr('src', '1-column.jpg');
+            break;
+          case '2-column-hover.jpg':
+          $(this).attr('src', '2-column.jpg');
+            break;
+          case '3-column-hover.jpg':
+          $(this).attr('src', '3-column.jpg');
+            break;
+          default:
+          $(this).css('background-color', 'green');
+        };
+
+      });
+
+      $('.main-style img').click(function() {
+        var index = $(this).index();
+        switch (index) {
+          case 1:
+          $('.new-main ul').fadeOut(100);
+          $('.new-main ul').css('column-count', '1');
+          $('.new-main ul').fadeIn(1000);
+            break;
+          case 2:
+          $('.new-main ul').fadeOut(100);
+          $('.new-main ul').css('column-count', '2');
+          $('.new-main ul').fadeIn(1000);
+            break;
+          case 3:
+          $('.new-main ul').fadeOut(100);
+          $('.new-main ul').css('column-count', '3');
+          $('.new-main ul').fadeIn(1000);
+            break;
+          default:
+            alert("Error changing column count");
+        };
+
+        function myfunction() {
+          $( '.new-main li' ).toggleClass( 'li-border li-border-on' );
+          $( '.new-main ul' ).toggleClass( 'gap gap-on' );
+          $( '.new-main' ).toggleClass( 'main-padding main-padding-on' );
+        };
+
+      });
+
+      $('.main-style-mobile img').click(function() {
+        var index = $(this).index();
+        switch (index) {
+          case 0:
+          $('.new-main ul').fadeOut(100);
+          $('.new-main ul').css('column-count', '1');
+          $('.new-main ul').fadeIn(1000);
+            break;
+          case 1:
+          $('.new-main ul').fadeOut(100);
+          $('.new-main ul').css('column-count', '2');
+          $('.new-main ul').fadeIn(1000);
+            break;
+          case 2:
+          $('.new-main ul').fadeOut(100);
+          $('.new-main ul').css('column-count', '3');
+          $('.new-main ul').fadeIn(1000);
+            break;
+          default:
+            alert("Error changing column count");
+        };
+
+        function myfunction() {
+          $( '.new-main li' ).toggleClass( 'li-border li-border-on' );
+          $( '.new-main ul' ).toggleClass( 'gap gap-on' );
+          $( '.new-main' ).toggleClass( 'main-padding main-padding-on' );
+        };
+
+        $( ".nav2" ).toggleClass( "small-hide-tab" );
+        $( ".full-window" ).toggleClass( "full-window-show" );
+        $( ".mobile-nav-hide" ).css("display", "block");
+        $( ".click-x" ).toggleClass( "open-x" );
+
+      });
+
+    });
+
   </script>
 </head>
 
@@ -197,6 +329,15 @@ $(document).ready(function() {
       <li class="mobile-nav-hide new-hide"><a href="#top" class="navHome2">Home</a></li>
       <li class="mobile-nav-hide new-hide"><a href="#paint" class="navPaint2">Paintings</a></li>
       <li class="mobile-nav-hide new-hide"><a href="#about" class="navAbout2">About</a></li>
+
+      <li>
+        <div class="main-style-mobile">
+          <img src="1-column.jpg" alt="">
+          <img src="2-column.jpg" alt="">
+          <img src="3-column.jpg" alt="">
+        </div>
+      </li>
+
       <li><div class="logo-mobile"></div></li>
     </ul>
 
@@ -292,6 +433,14 @@ $(document).ready(function() {
   </section> -->
 
   <section class="new-main" id="paint">
+
+    <div class="main-style">
+      <p>Select The Layout</p>
+      <img src="1-column.jpg" alt="">
+      <img src="2-column.jpg" alt="">
+      <img src="3-column.jpg" alt="">
+    </div>
+
     <ul>
       <li><img src="painting_1.jpg" alt=""></li>
       <li><img src="painting_2.jpg" alt=""></li>

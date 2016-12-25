@@ -10,13 +10,27 @@
   <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Open+Sans+Condensed:300|Lato:300,700" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="velocity.js"></script>
   <script type="text/javascript">
 // loading screen
 $(document).ready( function() {
-  //setTimeout(function(){
+
+  setTimeout(function(){
     $( ".loading-screen" ).css( 'display', 'none' );
-    alert("done loading");
-  //}, 5000);
+    // alert("done loading");
+  }, 2000);
+});
+
+// TEXT LOADING animation
+$(document).ready( function() {
+  $(window).on("load", function() {
+    setTimeout(function(){
+      $( '.loading-images' ).animate({
+          bottom: '-10px',
+          opacity: '0',
+      });
+    }, 4000);
+  });
 });
 
 // default css adding classes
@@ -69,9 +83,11 @@ $(window).on('scroll', function() {
   if ( scrollPosition <= (417 - 77) ) {
     $( ".navHome").addClass( "current" );
     $( '.navHome2' ).addClass( 'new-current' );
+    $( '.inner-header' ).addClass( 'inner-header-transition' );
   } else {
     $( ".navHome").removeClass( "current" );
     $( '.navHome2' ).removeClass( 'new-current' );
+    $( '.inner-header' ).removeClass( 'inner-header-transition' );
   };
   // PAINTINGS
   if ( (scrollPosition > (417 - 77)) && (scrollPosition <= (417 - 77) + $( '.new-main' ).outerHeight( true ) ) ) {
@@ -153,9 +169,17 @@ $(document).ready(function() {
     $( ".mobile-nav-hide" ).css("display", "block");
   });
 });
-// samething but for li elements
+// samething but for li elements + screen overlay
 $(document).ready(function() {
   $( ".new-hide" ).click(function() {
+    $( ".nav2" ).toggleClass( "small-hide-tab" );
+    $( ".full-window" ).toggleClass( "full-window-show" );
+    $( ".mobile-nav-hide" ).css("display", "block");
+// also toggle x button
+    $( ".click-x" ).toggleClass( "open-x" );
+  });
+  // overlay
+  $( ".full-window" ).click(function() {
     $( ".nav2" ).toggleClass( "small-hide-tab" );
     $( ".full-window" ).toggleClass( "full-window-show" );
     $( ".mobile-nav-hide" ).css("display", "block");
@@ -271,19 +295,22 @@ $(document).ready(function() {
         var index = $(this).index();
         switch (index) {
           case 0:
-          $('.new-main ul').fadeOut(100);
-          $('.new-main ul').css('column-count', '1');
-          $('.new-main ul').fadeIn(1000);
+          $('.new-main ul').fadeOut(1000, function() {
+            $('.new-main ul').css('column-count', '1');
+          });
+          $('.new-main ul').fadeIn(500);
             break;
           case 1:
-          $('.new-main ul').fadeOut(100);
-          $('.new-main ul').css('column-count', '2');
-          $('.new-main ul').fadeIn(1000);
+          $('.new-main ul').fadeOut(1000, function() {
+            $('.new-main ul').css('column-count', '2');
+          });
+          $('.new-main ul').fadeIn(500);
             break;
           case 2:
-          $('.new-main ul').fadeOut(100);
-          $('.new-main ul').css('column-count', '3');
-          $('.new-main ul').fadeIn(1000);
+          $('.new-main ul').fadeOut(1000, function() {
+            $('.new-main ul').css('column-count', '3');
+          });
+          $('.new-main ul').fadeIn(500);
             break;
           default:
             alert("Error changing column count");
@@ -304,18 +331,106 @@ $(document).ready(function() {
 
     });
 
+// script for the loading images..
+// @ bottom
+
+// NEW NEW NAVBAR FOR MOBILE
+$(document).ready(function testFunctionNavMobile() {
+
+  $('.circle-nav-container').fadeOut();
+
+  var x = $(window).width(),
+      y = $(window).height();
+
+  $('.new-mobile-nav-circle').height(y * 2);
+  $('.new-mobile-nav-circle').width(x * 2);
+
+  $('.new-icon').click(function() {
+
+    if ( $('.new-icon').hasClass('close-circle') ) {
+
+      $('.new-mobile-nav-circle').velocity({
+        scaleX: 2,
+        scaleY: 2,
+        opacity: 1
+      }, 800, function() {
+        // ITEMS IN ANIMATION
+        $('.circle-nav-container').fadeIn();
+      });
+
+
+    } else {
+
+      // ITEMS OUT ANIMATION
+      $('.circle-nav-container').fadeOut(function() {
+        $('.new-mobile-nav-circle').velocity({
+          scaleX: 0,
+          scaleY: 0,
+          opacity: 0
+        }, 800);
+      });
+
+    };
+
+    $('.new-icon').toggleClass('close-circle');
+
+  });
+
+});
   </script>
 </head>
 
 <body id="top">
 
-<div class="loading-screen" style="opacity: .5">
+  <div class="open-icon small-hide click-x new-icon close-circle">
+    <div class="one"></div>
+    <div class="two"></div>
+    <div class="three"></div>
+  </div>
+  <div class="new-mobile-nav-circle"></div>
+  <ul class="circle-nav-container">
+
+    <li class="circle-nav"><a href="#top" class="navHome2 new-current">Home</a></li>
+    <li class="circle-nav"><a href="#paint" class="navPaint2">Paintings</a></li>
+    <li class="circle-nav"><a href="#about" class="navAbout2">About</a></li>
+
+    <li>
+      <div class="main-style-mobile">
+        <img src="1-column.jpg" alt="">
+        <img src="2-column.jpg" alt="">
+        <img src="3-column.jpg" alt="">
+      </div>
+    </li>
+
+    <li><div class="logo-mobile"></div></li>
+
+  </ul>
+
+
+  <div class="loading-images">
+    <span class="i1">L</span>
+    <span class="i2">O</span>
+    <span class="i3">A</span>
+    <span class="i4">D</span>
+    <span class="i5">I</span>
+    <span class="i6">N</span>
+    <span class="i7">G</span>
+    <span class="i8">  &nbsp; </span>
+    <span class="i9">I</span>
+    <span class="i10">M</span>
+    <span class="i11">A</span>
+    <span class="i12">G</span>
+    <span class="i13">E</span>
+    <span class="i14">S</span>
+  </div>
+
+<div class="loading-screen">
   <div class="loading"></div>
   <div class="loading2"></div>
 </div>
 
-  <div class="full-window"></div>
-  <div class="nav2 small-hide-tab">
+  <!-- <div class="full-window"></div> -->
+  <!-- <div class="nav2 small-hide-tab">
 
     <ul>
       <li>
@@ -341,14 +456,14 @@ $(document).ready(function() {
       <li><div class="logo-mobile"></div></li>
     </ul>
 
-  </div>
+  </div> -->
 
 
 
 
 
   <header>
-    <section class="inner-header inner-header1 navbar-top">
+    <section class="inner-header inner-header1 navbar-top inner-header-transition">
       <div class="nav-container">
       <div class="logo"></div>
       <nav>
@@ -503,6 +618,17 @@ Blablabla sldjflkdshfls lsdf las lsdjfldsa flksdjf ldskjaf ld flsd fdsl jfldsfj 
     </div>
   </div>
 </footer>
+
+<script type="text/javascript">
+function init() {
+var imgDefer = document.getElementsByTagName('img');
+for (var i=0; i<imgDefer.length; i++) {
+if(imgDefer[i].getAttribute('data-src')) {
+imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
+} } }
+window.onload = init;
+</script>
+
 
 </body>
 
